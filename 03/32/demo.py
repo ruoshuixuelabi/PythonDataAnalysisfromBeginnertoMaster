@@ -5,3 +5,4 @@ columns = ['语文','数学','英语']
 df = pd.DataFrame(data=data, index=name, columns=columns)
 df.rename(columns = {'语文':'语文（上）','数学':'数学（上）','英语':'英语（上）'},inplace = True)
 
+print(df)

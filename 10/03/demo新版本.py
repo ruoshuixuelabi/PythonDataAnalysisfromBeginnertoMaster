@@ -1,8 +1,18 @@
 from sklearn.svm import LinearSVR  # 导入线性回归类
-from sklearn.datasets import load_boston  # 导入加载波士顿数据集
 from pandas import DataFrame  # 导入DataFrame
+import pandas as pd
+import numpy as np
 
-boston = load_boston()  # 创建加载波士顿数据对象
+data_url = "http://lib.stat.cmu.edu/datasets/boston"
+raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
+data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+target = raw_df.values[1::2, 2]
+from sklearn.datasets import fetch_california_housing
+
+# housing = fetch_california_housing()
+boston = fetch_california_housing()
+
+# boston = load_boston()  # 创建加载波士顿数据对象
 # 将波士顿房价数据创建为DataFrame对象
 df = DataFrame(boston.data, columns=boston.feature_names)
 df.insert(0, 'target', boston.target)  # 将价格添加至DataFrame对象中
