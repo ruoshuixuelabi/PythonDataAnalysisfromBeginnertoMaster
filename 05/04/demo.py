@@ -5,6 +5,6 @@ df=pd.read_excel('体温.xls') #导入Excel文件
 x =df['日期']                #x轴数据
 y=df['体温']                 #y轴数据
 plt.plot(x,y)
-
+plt.show()
 
 
